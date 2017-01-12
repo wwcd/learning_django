@@ -14,7 +14,7 @@ from .models import Question
 
 
 # def index(request):
-#     latest_question_list = Question.objects.order_by('-put_date')[0:5]
+#     latest_question_list = Question.objects.order_by('-pub_date')[0:5]
 #
 #     # output = ', '.join([q.question_txt for q in latest_question_list])
 #     # return HttpResponse(output)
@@ -57,15 +57,15 @@ class IndexView(generic.ListView):
     def get_queryset(self):
 
         # """Retrun the last five published questions."""
-        # return Question.objects.order_by('-put_date')[:5]
+        # return Question.objects.order_by('-pub_date')[:5]
 
         """
         Return the last five published questions (not including those set to be
         published in the future).
         """
         return Question.objects.filter(
-                            put_date__lte=timezone.now()
-                            ).order_by('-put_date')[:5]
+                            pub_date__lte=timezone.now()
+                            ).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):

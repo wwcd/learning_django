@@ -15,24 +15,27 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Choice',
+            name='Item',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('choice_text', models.CharField(max_length=200)),
-                ('votes', models.IntegerField(default=0)),
+                ('name', models.CharField(max_length=250)),
+                ('description', models.TextField()),
             ],
+            options={
+                'ordering': ['name'],
+            },
         ),
         migrations.CreateModel(
-            name='Question',
+            name='Photo',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('question_txt', models.CharField(max_length=200)),
-                ('pub_date', models.DateTimeField(verbose_name='date published')),
+                ('title', models.CharField(max_length=100)),
+                ('image', models.ImageField(upload_to='photos')),
+                ('caption', models.CharField(blank=True, max_length=250)),
+                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gallery.Item')),
             ],
-        ),
-        migrations.AddField(
-            model_name='choice',
-            name='question',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='polls.Question'),
+            options={
+                'ordering': ['title'],
+            },
         ),
     ]
