@@ -1,8 +1,8 @@
-# 配置项
+## 1 配置项
 
 所有配置项参见[官网](https://docs.djangoproject.com/en/1.8/ref/settings)
 
-## ALLOWED_HOSTS
+### 1.2 ALLOWED_HOSTS
 
 ALLOWED_HOSTS = [*]
 
