@@ -16,6 +16,11 @@ import os
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost'
 
+# REST_FRAMWORK
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 10
+}
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -64,7 +69,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        #'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
